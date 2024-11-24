@@ -1,19 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:favorite_places/models/place.dart';
 
 class PlacesNotifier extends StateNotifier<List<Place>> {
-  PlacesNotifier() : super([]);
+  PlacesNotifier() : super(const []);
 
-  bool addPlace(Place newPlace) {
-    final isAlreadyAdded = state.contains(newPlace);
-
-    if (isAlreadyAdded) {
-      return false;
-    } else {
-      state = [...state, newPlace];
-      return true;
-    }
+  void addPlace(String name, File image) {
+    final newPlace = Place(name: name, image: image);
+    state = [newPlace, ...state];
   }
 }
 
