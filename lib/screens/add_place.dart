@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:favorite_places/models/place.dart';
 import 'package:favorite_places/providers/places_provider.dart';
 import 'package:favorite_places/widgets/image_input.dart';
+import 'package:favorite_places/widgets/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,6 +19,7 @@ class AddPlaceScreen extends ConsumerStatefulWidget {
 class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _nameController = TextEditingController();
   File? _selectedImage;
+  PlaceLocation? _selectedLocation;
 
   @override
   void dispose() {
@@ -28,12 +30,12 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   void _savePlace() {
     final enteredName = _nameController.text;
 
-    if (enteredName.isEmpty || _selectedImage == null) {
+    if (enteredName.isEmpty || _selectedImage == null || _selectedLocation == null) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
           title: const Text('Invalid input!'),
-          content: const Text('Please make sure name is valid.'),
+          content: const Text('Please make sure all fields are filled.'),
           actions: [
             TextButton(
               onPressed: () {
@@ -46,11 +48,12 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
       );
       return;
     }
-    ref.read(placesProvider.notifier).addPlace(enteredName, _selectedImage!);
+    ref.read(placesProvider.notifier).addPlace(enteredName, _selectedImage!, _selectedLocation!);
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Place was added!'),
+      SnackBar(
+        content: const Text('Place was added!'),
+        backgroundColor: Colors.green[300],
       ),
     );
     Navigator.pop(context);
@@ -85,6 +88,10 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
                 _selectedImage = image;
               },
             ),
+            const SizedBox(height: 12,),
+            LocationInput(onSelectLocation: (location){
+              _selectedLocation = location;
+            },),
             const SizedBox(
               height: 12,
             ),
