@@ -1,16 +1,8 @@
 # favorite_places
 
-A new Flutter project.
+A simple app that allows to add and remove favorite places from a list. Each place has its name, image (should be taken with the use of a phone camera) and a location on Google Maps (that can be set autumatically or manually). 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+<img src="https://github.com/baltsaros/favorite_places/blob/main/places_demo.gif" height="600" alt="Shopping list demo">
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
