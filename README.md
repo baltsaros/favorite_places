@@ -20,9 +20,9 @@ A simple Flutter app that allows to manage a list of favorite places. The app wa
 * Execute `flutter run` to launch the app
 
 ## Demo
-<center>
-  <img src="https://github.com/baltsaros/favorite_places/blob/main/places_demo.gif" height="600" alt="Shopping list demo">
-</center>
+<p align="center">
+  <img src="https://github.com/baltsaros/favorite_places/blob/main/places_demo.gif" height="600" alt="Favorite places demo">
+</p>
 
 ## Links
 * [Udemy coures](https://campus19.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/)
